@@ -1,6 +1,6 @@
 package pl.adaroz.springboot2.homework7.model;
 
-public class Cars {
+public class Car {
 
   private long id;
   private String make;
