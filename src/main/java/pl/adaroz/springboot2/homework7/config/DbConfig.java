@@ -30,6 +30,14 @@ public class DbConfig {
 //                "model varchar(50), " +
 //                "year int" +
 //                ")");
+//        getJdbcTemplate().update("insert into cars " +
+//                "values " +
+//                "(1, 'Volvo', 'XC90', 2019), " +
+//                "(2, 'Honda', 'CR-V', 2020), " +
+//                "(3, 'BMW', '6 GT', 2018), " +
+//                "(4, 'Fiat', 'Bravo', 2017), " +
+//                "(5, 'Audi', 'Q7', 2015)"
+//        );
 //    }
 
 }
