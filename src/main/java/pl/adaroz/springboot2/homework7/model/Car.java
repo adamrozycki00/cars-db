@@ -5,9 +5,9 @@ public class Car {
   private long id;
   private String make;
   private String model;
-  private long year;
+  private int year;
 
-  public Car(long id, String make, String model, long year) {
+  public Car(long id, String make, String model, int year) {
     this.id = id;
     this.make = make;
     this.model = model;
@@ -45,7 +45,7 @@ public class Car {
     return year;
   }
 
-  public void setYear(long year) {
+  public void setYear(int year) {
     this.year = year;
   }
 
