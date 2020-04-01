@@ -1,12 +1,14 @@
 package pl.adaroz.springboot2.homework7.dao;
 
+import org.springframework.stereotype.Component;
 import pl.adaroz.springboot2.homework7.model.Car;
 
 import java.util.List;
 
+@Component
 public interface CarDao {
 
-    void saveCar();
+    public void saveCar(String make, String model, int year);
 
     List<Car> findAll();
 

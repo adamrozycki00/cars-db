@@ -25,18 +25,18 @@ public class DbConfig {
 //    @EventListener(ApplicationReadyEvent.class)
 //    public void init() {
 //        getJdbcTemplate().update("create table cars (" +
-//                "id int, " +
+//                "id int auto_increment primary key, " +
 //                "make varchar(50), " +
 //                "model varchar(50), " +
 //                "year int" +
 //                ")");
-//        getJdbcTemplate().update("insert into cars " +
+//        getJdbcTemplate().update("insert into cars (make, model, year) " +
 //                "values " +
-//                "(1, 'Volvo', 'XC90', 2019), " +
-//                "(2, 'Honda', 'CR-V', 2020), " +
-//                "(3, 'BMW', '6 GT', 2018), " +
-//                "(4, 'Fiat', 'Bravo', 2017), " +
-//                "(5, 'Audi', 'Q7', 2015)"
+//                "('Volvo', 'XC90', 2019), " +
+//                "('Honda', 'CR-V', 2020), " +
+//                "('BMW', '6 GT', 2018), " +
+//                "('Fiat', 'Bravo', 2017), " +
+//                "('Audi', 'Q7', 2015)"
 //        );
 //    }
 
