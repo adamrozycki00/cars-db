@@ -48,8 +48,10 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void deleteCar(Car car) {
-
+    public void deleteCar(long id) {
+        String sql = "delete form cars " +
+                "where id=?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override
