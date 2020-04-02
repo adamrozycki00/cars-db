@@ -56,7 +56,16 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public List<Car> findByYear(int from, int to) {
-        return null;
+        List<Car> carList = new ArrayList<>();
+        String sql = "select * form cars " +
+                "where year between ? and ?";
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, from, to);
+        maps.stream().forEach(car -> carList.add(new Car(
+                Long.parseLong(String.valueOf(car.get("id"))),
+                String.valueOf(car.get("make")),
+                String.valueOf(car.get("model")),
+                Integer.parseInt(String.valueOf(car.get("year"))))));
+        return carList;
     }
 
 }
