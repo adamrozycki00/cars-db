@@ -22,7 +22,7 @@ public class CarDaoImpl implements CarDao {
     @Override
     public void saveCar(String make, String model, int year) {
         Car car = new Car(0, make, model, year);
-        String sql = "insert into cars values (?, ?, ?)";
+        String sql = "insert into cars (make, model, year) values (?, ?, ?)";
         jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear());
     }
 
@@ -49,7 +49,7 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public void deleteCar(long id) {
-        String sql = "delete form cars " +
+        String sql = "delete from cars " +
                 "where id=?";
         jdbcTemplate.update(sql, id);
     }
@@ -57,7 +57,7 @@ public class CarDaoImpl implements CarDao {
     @Override
     public List<Car> findByYear(int from, int to) {
         List<Car> carList = new ArrayList<>();
-        String sql = "select * form cars " +
+        String sql = "select * from cars " +
                 "where year between ? and ?";
         List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, from, to);
         maps.stream().forEach(car -> carList.add(new Car(
