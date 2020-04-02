@@ -41,7 +41,10 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public void updateCar(Car car) {
-
+        String sql = "update cars " +
+                "set make=?, model=?, year=? " +
+                "where id=?";
+        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear(), car.getId());
     }
 
     @Override
