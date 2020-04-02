@@ -8,14 +8,16 @@ import java.util.List;
 @Component
 public interface CarDao {
 
-    public void saveCar(String make, String model, int year);
+    public void saveCar(String make, String model, Long year);
+
+    public void saveCar(Car newCar);
 
     List<Car> findAll();
 
     void updateCar(Car car);
 
-    void deleteCar(long id);
+    void deleteCar(Long id);
 
-    List<Car> findByYear(int from, int to);
+    List<Car> findByYear(Long from, Long to);
 
 }

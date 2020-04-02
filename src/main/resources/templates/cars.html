@@ -9,6 +9,8 @@
 
     <h1>Cars</h1>
 
+    <div><a th:href="@{/cars/add}">Add a car</a></div>
+
     <ol>
         <li th:each="car : ${allCars}">
             <span th:text="${car.make} + ', '"></span>

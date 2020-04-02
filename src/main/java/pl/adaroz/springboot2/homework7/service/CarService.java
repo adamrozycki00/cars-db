@@ -17,8 +17,12 @@ public class CarService {
         this.carDao = carDao;
     }
 
-    public void saveCar(String make, String model, int year) {
+    public void saveCar(String make, String model, Long year) {
         carDao.saveCar(make, model, year);
+    }
+
+    public void saveCar(Car newCar) {
+        carDao.saveCar(newCar);
     }
 
     public List<Car> findAll() {
@@ -29,11 +33,11 @@ public class CarService {
         carDao.updateCar(car);
     }
 
-    public void deleteCar(long id) {
+    public void deleteCar(Long id) {
         carDao.deleteCar(id);
     }
 
-    public List<Car> findByYear(int from, int to) {
+    public List<Car> findByYear(Long from, Long to) {
         return carDao.findByYear(from, to);
     }
 

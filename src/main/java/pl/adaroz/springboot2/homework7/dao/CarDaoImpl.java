@@ -20,10 +20,16 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void saveCar(String make, String model, int year) {
-        Car car = new Car(0, make, model, year);
+    public void saveCar(String make, String model, Long year) {
+        Car car = new Car(0L, make, model, year);
         String sql = "insert into cars (make, model, year) values (?, ?, ?)";
         jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear());
+    }
+
+    @Override
+    public void saveCar(Car newCar) {
+        String sql = "insert into cars (make, model, year) values (?, ?, ?)";
+        jdbcTemplate.update(sql, newCar.getMake(), newCar.getModel(), newCar.getYear());
     }
 
     @Override
@@ -35,7 +41,7 @@ public class CarDaoImpl implements CarDao {
                 Long.parseLong(String.valueOf(car.get("id"))),
                 String.valueOf(car.get("make")),
                 String.valueOf(car.get("model")),
-                Integer.parseInt(String.valueOf(car.get("year"))))));
+                Long.parseLong(String.valueOf(car.get("year"))))));
         return carList;
     }
 
@@ -48,14 +54,14 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void deleteCar(long id) {
+    public void deleteCar(Long id) {
         String sql = "delete from cars " +
                 "where id=?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
-    public List<Car> findByYear(int from, int to) {
+    public List<Car> findByYear(Long from, Long to) {
         List<Car> carList = new ArrayList<>();
         String sql = "select * from cars " +
                 "where year between ? and ?";
@@ -64,7 +70,7 @@ public class CarDaoImpl implements CarDao {
                 Long.parseLong(String.valueOf(car.get("id"))),
                 String.valueOf(car.get("make")),
                 String.valueOf(car.get("model")),
-                Integer.parseInt(String.valueOf(car.get("year"))))));
+                Long.parseLong(String.valueOf(car.get("year"))))));
         return carList;
     }
 

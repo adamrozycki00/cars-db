@@ -2,12 +2,12 @@ package pl.adaroz.springboot2.homework7.model;
 
 public class Car {
 
-  private long id;
+  private Long id;
   private String make;
   private String model;
-  private int year;
+  private Long year;
 
-  public Car(long id, String make, String model, int year) {
+  public Car(Long id, String make, String model, Long year) {
     this.id = id;
     this.make = make;
     this.model = model;
@@ -17,11 +17,11 @@ public class Car {
   public Car() {
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -41,11 +41,11 @@ public class Car {
     this.model = model;
   }
 
-  public long getYear() {
+  public Long getYear() {
     return year;
   }
 
-  public void setYear(int year) {
+  public void setYear(Long year) {
     this.year = year;
   }
 

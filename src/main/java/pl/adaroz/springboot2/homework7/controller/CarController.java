@@ -3,9 +3,7 @@ package pl.adaroz.springboot2.homework7.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.adaroz.springboot2.homework7.model.Car;
 import pl.adaroz.springboot2.homework7.service.CarService;
 
@@ -29,8 +27,21 @@ public class CarController {
         return "/cars";
     }
 
+    @PostMapping("")
+    public String saveCar(@ModelAttribute Car newCar) {
+        carService.saveCar(newCar);
+        return "redirect:/cars";
+    }
+
+    @GetMapping("/add")
+    public String addCar(Model model) {
+        Car newCar = new Car();
+        model.addAttribute("newCar", newCar);
+        return "/add";
+    }
+
     @GetMapping("/delete")
-    public String deleteCar(@RequestParam long id) {
+    public String deleteCar(@RequestParam Long id) {
         carService.deleteCar(id);
         return "redirect:/cars";
     }
