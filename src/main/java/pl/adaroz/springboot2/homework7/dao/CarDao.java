@@ -8,7 +8,7 @@ import java.util.List;
 @Component
 public interface CarDao {
 
-    public void saveCar(String make, String model, Long year);
+    public void saveCar(String make, String model, String colour, Long year);
 
     public void saveCar(Car newCar);
 

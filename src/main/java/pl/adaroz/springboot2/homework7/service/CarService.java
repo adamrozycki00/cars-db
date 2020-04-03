@@ -17,8 +17,8 @@ public class CarService {
         this.carDao = carDao;
     }
 
-    public void saveCar(String make, String model, Long year) {
-        carDao.saveCar(make, model, year);
+    public void saveCar(String make, String model, String colour, Long year) {
+        carDao.saveCar(make, model, colour, year);
     }
 
     public void saveCar(Car newCar) {

@@ -20,37 +20,33 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void saveCar(String make, String model, Long year) {
-        Car car = new Car(0L, make, model, year);
-        String sql = "insert into cars (make, model, year) values (?, ?, ?)";
-        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear());
+    public void saveCar(String make, String model, String colour, Long year) {
+        Car car = new Car(0L, make, model, colour, year);
+        String sql = "insert into cars (make, model, colour, year) values (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getColour(), car.getYear());
     }
 
     @Override
     public void saveCar(Car newCar) {
-        String sql = "insert into cars (make, model, year) values (?, ?, ?)";
-        jdbcTemplate.update(sql, newCar.getMake(), newCar.getModel(), newCar.getYear());
+        String sql = "insert into cars (make, model, colour, year) values (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, newCar.getMake(), newCar.getModel(), newCar.getColour(), newCar.getYear());
     }
 
     @Override
     public List<Car> findAll() {
         List<Car> carList = new ArrayList<>();
         String sql = "select * from cars";
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql);
-        maps.stream().forEach(car -> carList.add(new Car(
-                Long.parseLong(String.valueOf(car.get("id"))),
-                String.valueOf(car.get("make")),
-                String.valueOf(car.get("model")),
-                Long.parseLong(String.valueOf(car.get("year"))))));
+        List<Map<String, Object>> carMaps = jdbcTemplate.queryForList(sql);
+        addCarToList(carList, carMaps);
         return carList;
     }
 
     @Override
     public void updateCar(Car car) {
         String sql = "update cars " +
-                "set make=?, model=?, year=? " +
+                "set make=?, model=?, colour=?, year=? " +
                 "where id=?";
-        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getYear(), car.getId());
+        jdbcTemplate.update(sql, car.getMake(), car.getModel(), car.getColour(), car.getYear(), car.getId());
     }
 
     @Override
@@ -65,13 +61,18 @@ public class CarDaoImpl implements CarDao {
         List<Car> carList = new ArrayList<>();
         String sql = "select * from cars " +
                 "where year between ? and ?";
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList(sql, from, to);
-        maps.stream().forEach(car -> carList.add(new Car(
+        List<Map<String, Object>> carMaps = jdbcTemplate.queryForList(sql, from, to);
+        addCarToList(carList, carMaps);
+        return carList;
+    }
+
+    private void addCarToList(List<Car> carList, List<Map<String, Object>> carMaps) {
+        carMaps.stream().forEach(car -> carList.add(new Car(
                 Long.parseLong(String.valueOf(car.get("id"))),
                 String.valueOf(car.get("make")),
                 String.valueOf(car.get("model")),
+                String.valueOf(car.get("colour")),
                 Long.parseLong(String.valueOf(car.get("year"))))));
-        return carList;
     }
 
 }

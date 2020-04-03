@@ -28,15 +28,16 @@ public class DbConfig {
 //                "id int auto_increment primary key, " +
 //                "make varchar(50), " +
 //                "model varchar(50), " +
+//                "colour varchar(50), " +
 //                "year int" +
 //                ")");
-//        getJdbcTemplate().update("insert into cars (make, model, year) " +
+//        getJdbcTemplate().update("insert into cars (make, model, colour, year) " +
 //                "values " +
-//                "('Volvo', 'XC90', 2019), " +
-//                "('Honda', 'CR-V', 2020), " +
-//                "('BMW', '6 GT', 2018), " +
-//                "('Fiat', 'Bravo', 2017), " +
-//                "('Audi', 'Q7', 2015)"
+//                "('Volvo', 'XC90', 'beige', 2019), " +
+//                "('Honda', 'CR-V', 'black', 2020), " +
+//                "('BMW', '6 GT', 'white', 2018), " +
+//                "('Fiat', 'Bravo', 'red', 2017), " +
+//                "('Audi', 'Q7', 'white', 2015)"
 //        );
 //    }
 
