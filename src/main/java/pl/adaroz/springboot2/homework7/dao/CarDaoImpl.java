@@ -66,6 +66,18 @@ public class CarDaoImpl implements CarDao {
         return carList;
     }
 
+    @Override
+    public Long getMinYear() {
+        String sql = "select min(year) from cars";
+        return jdbcTemplate.queryForObject(sql, Long.class);
+    }
+
+    @Override
+    public Long getMaxYear() {
+        String sql = "select max(year) from cars";
+        return jdbcTemplate.queryForObject(sql, Long.class);
+    }
+
     private void addCarToList(List<Car> carList, List<Map<String, Object>> carMaps) {
         carMaps.stream().forEach(car -> carList.add(new Car(
                 Long.parseLong(String.valueOf(car.get("id"))),

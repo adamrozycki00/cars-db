@@ -38,7 +38,16 @@ public class CarService {
     }
 
     public List<Car> findByYear(Long from, Long to) {
+        System.out.println(carDao.findByYear(from, to));
         return carDao.findByYear(from, to);
+    }
+
+    public Long getMinYear() {
+        return carDao.getMinYear();
+    }
+
+    public Long getMaxYear() {
+        return carDao.getMaxYear();
     }
 
 }

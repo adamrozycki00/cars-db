@@ -9,15 +9,36 @@
 
     <h1>Cars</h1>
 
-    <div><a th:href="@{/cars/add}">Add a car</a></div>
+    <form th:action="@{/cars}" method="post">
+        <span>
+            From: <input type="number" name="from"
+                         th:min="${minYear}" th:max="${maxYear}"
+                         th:value="${from}">
+        </span>
+        <span>To: <input type="number" name="to"
+                         th:min="${minYear}" th:max="${maxYear}"
+                         th:value="${to}">
+        </span>
+        <span>
+            <input type="submit" th:value="Search">
+        </span>
+        <span>
+            <a th:href="@{/cars}">List all</a>
+        </span>
+        | <span>
+            <a th:href="@{/cars/add}">Add a car</a>
+        </span>
+    </form>
+
+
 
     <ol>
-        <li th:each="car : ${allCars}">
+        <li th:each="car : ${cars}">
             <span th:text="${car.make} + ' '"></span>
             <span th:text="${car.model} + ', '"></span>
             <span th:text="${car.colour} + ', '"></span>
             <span th:text="${car.year} + ' | '"></span>
-            <span><a th:href="@{/cars/delete(id=${car.id})}">Delete</a></span>
+            <span><a th:href="@{/cars/delete(id=${car.id} )}">Delete</a></span>
         </li>
     </ol>
 

@@ -9,13 +9,13 @@
 
     <h1>Adding a car</h1>
 
-    <form th:action="@{/cars}" method="post" th:object="${newCar}">
+    <form th:action="@{/cars/add}" method="post" th:object="${newCar}">
         Make: <span><input type="text" th:field="*{make}"></span>
         Model: <span><input type="text" th:field="*{model}"></span>
         Colour: <span><input type="text" th:field="*{colour}"></span>
         Year: <span><input type="text" th:field="*{year}"></span>
 
-        <input type="submit" value="Save"><br />
+        <span><input type="submit" th:value="Save"></span>
     </form>
 
 </body>

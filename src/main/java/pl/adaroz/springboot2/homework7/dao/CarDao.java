@@ -20,4 +20,8 @@ public interface CarDao {
 
     List<Car> findByYear(Long from, Long to);
 
+    Long getMinYear();
+
+    Long getMaxYear();
+
 }

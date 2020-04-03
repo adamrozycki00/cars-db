@@ -22,12 +22,29 @@ public class CarController {
 
     @GetMapping("")
     public String getAllCars(Model model) {
-        List<Car> allCars = carService.findAll();
-        model.addAttribute("allCars", allCars);
+        List<Car> cars = carService.findAll();
+        model.addAttribute("cars", cars);
+        model.addAttribute("minYear", carService.getMinYear());
+        model.addAttribute("maxYear", carService.getMaxYear());
+        model.addAttribute("from", carService.getMinYear());
+        model.addAttribute("to", carService.getMaxYear());
         return "/cars";
     }
 
     @PostMapping("")
+    public String getSelectedCars(@RequestParam Long from,
+                                  @RequestParam Long to,
+                                  Model model) {
+        List<Car> cars = carService.findByYear(from, to);
+        model.addAttribute("cars", cars);
+        model.addAttribute("minYear", carService.getMinYear());
+        model.addAttribute("maxYear", carService.getMaxYear());
+        model.addAttribute("from", from);
+        model.addAttribute("to", to);
+        return "/cars";
+    }
+
+    @PostMapping("/add")
     public String saveCar(@ModelAttribute Car newCar) {
         carService.saveCar(newCar);
         return "redirect:/cars";
